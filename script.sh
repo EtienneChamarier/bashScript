@@ -3,7 +3,7 @@
 # Le script demande quel dossier l'utilisateur souhaite sauvegarder / Si le dossier n'existe pas, il affiche un message d'erreur
 
 demande_dossier() {
-  read -p "Veuillez entrer le chemin complet du dossier à sauvegarder : " dossier_source
+  read -p "Veuillez entrer le nom du dossier que vous souhaitez sauvegarder : " dossier_source
   if [ ! -d "$dossier_source" ]; then
     echo "Le dossier n'existe pas."
     exit 1
@@ -35,7 +35,7 @@ creer_dossier_sauvegarde() {
 }
 
 # Fonction de sauvegarde
-effectuer_sauvegarde() {
+sauvegarde() {
   cp -r "$dossier_source" "$chemin_sauvegarde"
 }
 
@@ -45,7 +45,7 @@ while true; do
   demande_chemin_sauvegarde
   demande_confirmation
   creer_dossier_sauvegarde
-  effectuer_sauvegarde
+  sauvegarde
   echo "Sauvegarde terminée avec succès."
   read -p "Voulez-vous sauvegarder un autre dossier ? (Y/N) " autre_sauvegarde
   if [ "$autre_sauvegarde" != "Y" ] && [ "$autre_sauvegarde" != "y" ]; then
