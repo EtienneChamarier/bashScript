@@ -6,7 +6,6 @@ demande_dossier() {
   read -p "Veuillez entrer le nom du dossier que vous souhaitez sauvegarder : " dossier_source
   if [ ! -d "$dossier_source" ]; then
     echo "Le dossier n'existe pas."
-    exit 1
   fi
 }
 
@@ -22,7 +21,6 @@ demande_confirmation() {
   read -p "Confirmez-vous la sauvegarde du dossier '$dossier_source' à l'endroit '$chemin_sauvegarde' ? (Y/N) " confirmation
   if [ "$confirmation" != "Y" ] && [ "$confirmation" != "y" ]; then
     echo "Sauvegarde annulée."
-    exit 1
   fi
 }
 
@@ -50,6 +48,5 @@ while true; do
   read -p "Voulez-vous sauvegarder un autre dossier ? (Y/N) " autre_sauvegarde
   if [ "$autre_sauvegarde" != "Y" ] && [ "$autre_sauvegarde" != "y" ]; then
     echo "Fin du programme."
-    exit 0
   fi
 done
